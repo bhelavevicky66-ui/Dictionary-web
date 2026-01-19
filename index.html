@@ -11,19 +11,15 @@
     <style>
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            background-color: #0f172a; /* Base dark color to avoid white flash */
+            overflow-x: hidden;
         }
         .glass-effect {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         .dark .glass-effect {
-            background: rgba(15, 23, 42, 0.4);
+            background: rgba(15, 23, 42, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
         ::selection {
@@ -32,29 +28,29 @@
         }
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.1);
+            background: transparent;
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(99, 102, 241, 0.3);
+            background: #cbd5e1;
             border-radius: 10px;
         }
-        .mesh-bg {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
-            background-attachment: fixed;
-            position: relative;
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
         }
-        /* Add animated glowing blobs */
-        .mesh-bg::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 40%);
-            z-index: -1;
-            pointer-events: none;
+        .mesh-bg {
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            background-attachment: fixed;
+        }
+        .dark .mesh-bg {
+            background-color: #020617;
+            background-image: none; /* Dark mode uses pure dark colors */
         }
     </style>
 <script type="importmap">
@@ -67,10 +63,8 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
-<body class="mesh-bg text-slate-200">
+<body class="mesh-bg transition-colors duration-500">
     <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
