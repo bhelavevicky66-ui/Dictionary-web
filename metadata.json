@@ -1,0 +1,7 @@
+{
+  "name": "LexiMind AI Dictionary",
+  "description": "A feature-rich dictionary application with AI-powered word insights, search history, and phonetic audio support.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
